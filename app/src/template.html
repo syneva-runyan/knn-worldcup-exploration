@@ -10,7 +10,13 @@
     <!-- Carousel -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
+    <script>
+      // TODO colocate this with prediction form
+      function defaultPredictionError(e = {}) {
+          e.preventDefault && e.preventDefault();
+          alert("Ope! Make sure to load your data and train the classifier before making predictions");
+      }
+    </script>
 
   </head>
 

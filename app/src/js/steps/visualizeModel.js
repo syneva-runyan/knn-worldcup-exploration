@@ -1,6 +1,8 @@
 import visualizationHTML from '../../assets/visualizationHTML';
 
 function visualize(trainArray) {
+    const dataNotLoaded = document.getElementById('dataNotLoaded');
+    dataNotLoaded.parentElement.removeChild(dataNotLoaded);
     const displayWidth = document.getElementById('trainVisualization').offsetWidth;
     const displayHeight = 400;
     const options = {

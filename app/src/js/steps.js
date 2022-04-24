@@ -92,12 +92,7 @@ function createCTA(ctaText, onClick) {
   const button = document.createElement('button');
   button.textContent = ctaText;
   button.onclick = function(e) {
-    try {
       onClick(e.target, state);
-    } catch(e) {
-      console.error(e);
-      alert("Ope! Something went wrong! Did you run all the pre-requsit steps?")
-    }
   };
   return button;
 }

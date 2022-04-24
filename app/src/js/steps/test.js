@@ -45,6 +45,10 @@ const test = {
     },
     ctaText: "Test",
     onClick: async function(button, state) {
+        if(!state.classifer) {
+            alert("Ope! Make sure to load data and train classifier first.");
+            return;
+        }
         button.classList.add('button--loading');
 
         let cumulativeAccuracy = 0;

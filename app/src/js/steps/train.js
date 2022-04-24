@@ -28,6 +28,11 @@ const train = {
         return classifer;
     },
     onClick: (button, state) => {
+
+        if (!state.train) {
+            alert("Ope! Go back a step and load the data first!");
+            return;
+        }
         button.classList.add('button--loading');
         console.log('loading');
         setTimeout(async function() {

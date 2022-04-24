@@ -1,5 +1,6 @@
 const predictionForm = {
-    html: `<form id="predition-form">
+    html: `
+        <form id="predition-form" onsubmit="defaultPredictionError(); return false;">
         <div class="input_block">
         <label for="home_team">Home Team</label>
         <input name="home_team" id="home_team" />

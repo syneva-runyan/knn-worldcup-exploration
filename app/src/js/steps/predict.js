@@ -5,6 +5,8 @@ import predictionForm from '@/assets/predictionForm';
 
 function initForm(classifer) {
     const form = document.getElementById('predition-form');
+    // remove default error.
+    window.defaultPredictionError = () => {}
     form.addEventListener("submit", function(e) {
         e.preventDefault();
         const inputs = e.target.getElementsByTagName('input');
