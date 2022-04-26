@@ -17,7 +17,7 @@ const predictionForm = {
         </div>
 
         <div class="input_block">
-        <label for="home_team_d_spi">Home Team Offensive SPI</label>
+        <label for="home_team_d_spi">Home Team Defensive SPI</label>
         <input name="spi_defense" id="home_team_d_spi" />
         </div>
 
@@ -37,7 +37,7 @@ const predictionForm = {
         </div>
 
         <div class="input_block">
-        <label for="visiting_team_d_spi">Visiting Team Offensive SPI</label>
+        <label for="visiting_team_d_spi">Visiting Team Defensive SPI</label>
         <input name="opposing_spi_defense" id="visiting_team_d_spi" />
         </div>
 
