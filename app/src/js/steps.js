@@ -17,8 +17,8 @@ const steps = {
   "Load the dataset & split into test & training sets": splitTheData,
   "Create & train the model": train,
   "Visualize what's happening": visualizeModel,
-  "Test the Accuracy": testTheAccuracy,
   "Predict": predict,
+  "Test the Accuracy": testTheAccuracy,
 };
 
 const createHeader = (headerText, stepNum) => {
