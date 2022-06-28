@@ -17,17 +17,18 @@ function visualize(trainArray) {
 
     const data = trainArray.map(d => {
       let type = 'loss';
-      if (d.win == 0) {
+      const matchOutcome = d[d.length - 1]
+      if (matchOutcome == 0) {
           type = 'tie';
-      } else if (d.win == 1) {
+      } else if (matchOutcome == 1) {
           type = 'win'
       }
     
-      const { spi, opposing_spi} = d;
+      const [ spi, opposing_spi ] = d;
       return {x: spi * 3 , y: opposing_spi * 3, type };
     });
 
-    const k = 4;
+    const k = 3;
     const vis = new d3ml.KNNVisualization(data, options, types, k);
     vis.draw(); 
 }

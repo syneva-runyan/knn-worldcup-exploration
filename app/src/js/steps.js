@@ -1,4 +1,6 @@
-import splitTheData from "./steps/loadAndSplitTheData";
+import loadTheData from "./steps/loadTheData";
+import normalizeTheData from './steps/normalizeTheData';
+import splitTheData from "./steps/splitTheData";
 import train from "./steps/train";
 import visualizeModel from './steps/visualizeModel';
 import predict from './steps/predict';
@@ -7,14 +9,16 @@ import soccerBall from '@/images/soccerBall.png'
 
 // hold onto datasets & classifier in steps' scope.
 const state = {
-  splitFn: splitTheData.splitFn,
-  trainFn: train.trainFn,
+  splitFn: splitTheData.splitFn, // used in split & test steps
+  trainFn: train.trainFn,  // used in train & test steps
   visualizationFn: visualizeModel.visualizationFn,
   initPredictionForm: predict.initForm
 };
 
 const steps = {
-  "Load the dataset & split into test & training sets": splitTheData,
+  "Load the dataset": loadTheData,
+  "Normalize the dataset": normalizeTheData,
+  "Split into test & train sets": splitTheData,
   "Create & train the model": train,
   "Visualize what's happening": visualizeModel,
   "Predict": predict,

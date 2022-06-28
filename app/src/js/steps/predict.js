@@ -30,7 +30,7 @@ async function predictWinner(inputs, classifier) {
     ];
 
     // Predict value!
-    const result = await classifier.predictClass(tf.tensor(matchFeatures), 4);
+    const result = await classifier.predictClass(tf.tensor(matchFeatures), 3);
 
     let englishResults;
 

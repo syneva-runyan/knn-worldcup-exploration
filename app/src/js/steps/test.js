@@ -1,4 +1,4 @@
-// Use the test set to understand the accuracy of the classifier.
+import * as tf from '@tensorflow/tfjs';
 
 async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
@@ -6,10 +6,9 @@ async function asyncForEach(array, callback) {
     }
   }
 
-
 async function isPredictionRight(classifier, match, actualResult) {
      // test the accuracy.
-     const result = await classifier.predictClass(match, 4);
+     const result = await classifier.predictClass(match, 3);
      return parseInt(result.label) === actualResult;
 }
 
@@ -18,8 +17,12 @@ async function testTheAccuracy(dataset, classifier) {
     let numberRight = 0;
     let totalCount = 0;
 
-    await asyncForEach(dataset.features, async (match, idx) => {
-        const isAccurate = await isPredictionRight(classifier, match, dataset.labels[idx]);
+    const arr = await dataset.toArray();
+    await asyncForEach(arr, async (match, idx) => {
+        const labelIdx = match.length - 1;
+        const result = match[labelIdx]
+        match.splice(labelIdx, 1);
+        const isAccurate = await isPredictionRight(classifier, tf.tensor(match), result);
         if (isAccurate) {
             numberRight += 1;
         }
@@ -37,7 +40,7 @@ const test = {
     description2: [
         "When measuring accuracy, we create many models then average results to increase confidence in analysis.",
         "Here, we take the mean accuracy from 10 runs (10 chosen simply for presentation timing)",
-        "I have previously determined that k=4 gives the best results for this problem."
+        "I have previously determined that k=3 gives the best results for this problem."
     ],
     visualization: {
         type: 'img',
@@ -57,8 +60,8 @@ const test = {
            // console.log(`Shuffling data, run ${i}`);
             const { test, train } = await state.splitFn(state.dataset);
            // console.log("training classifier");
-            const classifer = state.trainFn(train);
-          //  console.log("measuring accuracy");
+            const classifer = await state.trainFn(train);
+            console.log("measuring accuracy");
             const accuracy =  await testTheAccuracy(test, classifer);
             cumulativeAccuracy+= accuracy;
             console.log(`Accuracy of run ${i}: ${accuracy}`);
