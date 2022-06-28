@@ -39,7 +39,7 @@ const test = {
     ],
     description2: [
         "When measuring accuracy, we create many models then average results to increase confidence in analysis.",
-        "Here, we take the mean accuracy from 10 runs (10 chosen simply for presentation timing)",
+        "Here, we take the mean accuracy from 30 runs (30 chosen simply for presentation timing)",
         "I have previously determined that k=3 gives the best results for this problem."
     ],
     visualization: {
@@ -55,7 +55,7 @@ const test = {
         button.classList.add('button--loading');
 
         let cumulativeAccuracy = 0;
-        let numOfRuns = 10;        
+        let numOfRuns = 30;        
         for (let i = 0; i < numOfRuns; i++) {
            // console.log(`Shuffling data, run ${i}`);
             const { test, train } = await state.splitFn(state.dataset);
